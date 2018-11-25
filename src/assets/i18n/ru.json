@@ -2,7 +2,8 @@
   "NAME": "Имя",
   "PASSWORD": "Пароль",
   "EMAIL": "Email",
-  "LOGIN": "Вход",
+  "LOGIN": "Логин",
+  "PAGE_LOGIN": "Вход",
   "SIGNUP": "Регистрация",
 
   "TAB1_TITLE": "Список",

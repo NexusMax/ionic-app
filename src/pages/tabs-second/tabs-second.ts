@@ -7,10 +7,10 @@ import { Tab1Root, Tab2Root, Tab3Root } from '../';
 
 @IonicPage()
 @Component({
-  selector: 'page-tabs',
-  templateUrl: 'tabs.html'
+  selector: 'page-tabs-second',
+  templateUrl: 'tabs-second.html'
 })
-export class TabsPage {
+export class TabsSecondPage {
   tab1Root: any = Tab1Root;
   tab2Root: any = Tab2Root;
   tab3Root: any = Tab3Root;
@@ -30,6 +30,6 @@ export class TabsPage {
       this.tab3Title = values['TAB3_TITLE'];
     });
 
-      console.log(this.auth.getToken());
+    console.log(this.auth.getToken());
   }
 }
