@@ -3,8 +3,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { IonicPage, NavController, ToastController } from 'ionic-angular';
 
 import { User, Auth } from '../../providers';
-import { MainPage } from '../';
-import { MainTeacherPage } from '../';
+import { MainPage, MainTeacherPage } from '../';
 
 @IonicPage()
 @Component({
@@ -16,8 +15,8 @@ export class LoginPage {
   // If you're using the username field with or without email, make
   // sure to add it to the type
   account: { login: string, password: string } = {
-    login: 'test@example.com',
-    password: 'test'
+    login: '',
+    password: ''
   };
 
   // Our translated text strings
@@ -37,22 +36,17 @@ export class LoginPage {
   // Attempt to login in through our User service
   doLogin() {
     this.user.login(this.account).subscribe((resp) => {
-        let page = MainPage;
-
-        if ( 1 ){
-            page = MainTeacherPage;
+        let page = '';
+        //@ts-ignore
+        switch ( this.user.getUser().status ){
+          case 1: page = MainTeacherPage; break;
+          case 0:
+          default: page = MainPage;
         }
 
-        this.auth.saveToken('token-auth');
-
         this.navCtrl.push(page);
-
-        console.log(resp);
     }, (err) => {
-        console.log(err);
-
-        this.auth.saveToken('token-not-auth');
-      this.navCtrl.push(MainTeacherPage);
+      console.log(err);
 
       // Unable to log in
       let toast = this.toastCtrl.create({

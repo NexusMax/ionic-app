@@ -5,22 +5,20 @@ import { Injectable } from '@angular/core';
  */
 @Injectable()
 export class Auth {
-  token: string = 'token';
+  private token: string = 'token';
 
   constructor() {
   }
-
-
 
   saveToken(token: string){
       localStorage.setItem(this.token, token);
   }
 
-    getToken(){
-        return localStorage.getItem(this.token);
-    }
+  getToken(){
+    return localStorage.getItem(this.token);
+  }
 
-    removeToken(){
-        localStorage.removeItem(this.token);
-    }
+  removeToken(){
+    localStorage.removeItem(this.token);
+  }
 }

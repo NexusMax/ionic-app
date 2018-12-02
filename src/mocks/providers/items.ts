@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { Item } from '../../models/item';
 
+
 @Injectable()
 export class Items {
   items: Item[] = [];
@@ -82,4 +83,5 @@ export class Items {
   delete(item: Item) {
     this.items.splice(this.items.indexOf(item), 1);
   }
+
 }

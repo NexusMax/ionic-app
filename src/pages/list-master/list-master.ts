@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, ModalController, NavController } from 'ionic-angular';
 
 import { Item } from '../../models/item';
-import { Items } from '../../providers';
+import { Items, Api, Auth } from '../../providers';
+
 
 @IonicPage()
 @Component({
@@ -11,9 +12,20 @@ import { Items } from '../../providers';
 })
 export class ListMasterPage {
   currentItems: Item[];
+  groupItems: any;
 
-  constructor(public navCtrl: NavController, public items: Items, public modalCtrl: ModalController) {
+  constructor(
+    public navCtrl: NavController,
+    public items: Items,
+    public api: Api,
+    public auth: Auth,
+    public modalCtrl: ModalController
+  ) {
     this.currentItems = this.items.query();
+
+    this.groupItems = this.getGroups();
+    console.log( this.currentItems );
+    console.log( this.groupItems );
   }
 
   /**
@@ -50,5 +62,22 @@ export class ListMasterPage {
     this.navCtrl.push('ItemDetailPage', {
       item: item
     });
+  }
+
+  getGroups(){
+
+    let info = {
+      'token': this.auth.getToken(),
+    };
+    let seq = this.api.post('group/list', info).share();
+
+    seq.subscribe((res: any) => {
+      console.log( res );
+
+    }, err => {
+      console.error('ERROR', err);
+    });
+
+    return seq;
   }
 }
