@@ -5,7 +5,7 @@
 
     <ion-buttons end>
       <button ion-button icon-only (click)="addItem()">
-        <ion-icon name="add"></ion-icon>
+        <!--<ion-icon name="add"></ion-icon>-->
       </button>
     </ion-buttons>
   </ion-navbar>
@@ -15,14 +15,14 @@
 <ion-content>
 
   <ion-list>
-    <ion-item-sliding *ngFor="let item of groupItems | async">
+    <ion-item-sliding *ngFor="let item of groupItems">
       <button ion-item (click)="openItem(item)">
         <ion-avatar item-start>
           <img [src]="" />
         </ion-avatar>
         <h2>{{item.name}}</h2>
         <p>{{item.name}}</p>
-        <ion-note item-end *ngIf="item.note">{{item.note}}</ion-note>
+        <ion-note item-end *ngIf="item.id">{{item.id}}</ion-note>
       </button>
 
       <ion-item-options>

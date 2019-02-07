@@ -12,7 +12,7 @@ import { Items, Api, Auth } from '../../providers';
 })
 export class ListMasterPage {
   currentItems: Item[];
-  groupItems: any;
+  groupItems: any[];
 
   constructor(
     public navCtrl: NavController,
@@ -22,10 +22,10 @@ export class ListMasterPage {
     public modalCtrl: ModalController
   ) {
     this.currentItems = this.items.query();
+    this.getGroups();
 
-    this.groupItems = this.getGroups();
     console.log( this.currentItems );
-    console.log( this.groupItems );
+
   }
 
   /**
@@ -72,12 +72,11 @@ export class ListMasterPage {
     let seq = this.api.post('group/list', info).share();
 
     seq.subscribe((res: any) => {
-      console.log( res );
-
+      // console.log( res );
+      this.groupItems = res.data;
     }, err => {
       console.error('ERROR', err);
     });
-
     return seq;
   }
 }

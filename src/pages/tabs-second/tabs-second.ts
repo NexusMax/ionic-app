@@ -31,8 +31,8 @@ export class TabsSecondPage {
       this.tab3Title = values['TAB3_TITLE'];
     });
 
-    console.log(this.user.authenticated());
-    console.log(this.user.getUser());
-    console.log(this.auth.getToken());
+    // console.log(this.user.authenticated());
+    // console.log(this.user.getUser());
+    // console.log(this.auth.getToken());
   }
 }
