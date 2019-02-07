@@ -3,6 +3,7 @@
   "PASSWORD": "Пароль",
   "EMAIL": "Email",
   "LOGIN": "Вхід",
+  "PAGE_LOGIN": "Вхід",
   "SIGNUP": "Реєстрація",
 
   "TAB1_TITLE": "Список",
@@ -29,6 +30,7 @@
   "SETTINGS_PAGE_PROFILE": "Редагування профілю",
 
   "WELCOME_TITLE": "Ласкаво просимо",
+  "WELCOME_INTRO": "Ласкаво просимо в журнал студентів",
 
   "LOGIN_TITLE": "Вхід",
   "LOGIN_ERROR": "Неможливо увійти. Будь ласка перевірте інформацію Вашого облікового запису та спробуйте увійти ще раз.",
@@ -38,6 +40,7 @@
   "SIGNUP_BUTTON": "Зареєструвати",
 
   "LIST_MASTER_TITLE": "Список",
+  "LIST_GROUP_TITLE": "Список моїх груп",
 
   "ITEM_CREATE_TITLE": "Новий елемент",
   "ITEM_CREATE_CHOOSE_IMAGE": "Додати зображення",
