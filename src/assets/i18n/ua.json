@@ -6,11 +6,13 @@
   "PAGE_LOGIN": "Вхід",
   "SIGNUP": "Реєстрація",
 
-  "TAB1_TITLE": "Список",
-  "TAB2_TITLE": "Пошук",
+  "TAB1_TITLE": "Мої групи",
+  "TAB2_TITLE": "Список груп",
   "TAB3_TITLE": "Налаштування",
 
   "MAP_TITLE": "Мапа",
+
+
 
   "TUTORIAL_SLIDE1_TITLE": "Ласкаво просимо до Ionic Super Starter",
   "TUTORIAL_SLIDE1_DESCRIPTION": "<b>Ionic Super Starter</b> це повноцінний набір прикладів для Ionic з великою кількістю готових сторінок та кращих практик.",
@@ -42,10 +44,12 @@
   "LIST_MASTER_TITLE": "Список",
   "LIST_GROUP_TITLE": "Список моїх груп",
 
+  "GROUP": "Група",
+
   "ITEM_CREATE_TITLE": "Новий елемент",
   "ITEM_CREATE_CHOOSE_IMAGE": "Додати зображення",
 
   "CARDS_TITLE": "Соціальний",
 
-  "SEARCH_TITLE": "Пошук"
+  "SEARCH_TITLE": "Список груп"
 }

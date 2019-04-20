@@ -28,6 +28,10 @@ export class ListMasterPage {
 
   }
 
+  ionViewWillEnter(){
+    this.getGroups();
+  }
+
   /**
    * The view loaded, let's query our items for the list
    */
@@ -59,6 +63,7 @@ export class ListMasterPage {
    * Navigate to the detail page for this item.
    */
   openItem(item: Item) {
+
     this.navCtrl.push('ItemDetailPage', {
       item: item
     });
@@ -69,7 +74,7 @@ export class ListMasterPage {
     let info = {
       'token': this.auth.getToken(),
     };
-    let seq = this.api.post('group/list', info).share();
+    let seq = this.api.get('group/my', info).share();
 
     seq.subscribe((res: any) => {
       // console.log( res );
