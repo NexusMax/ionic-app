@@ -12,3 +12,20 @@ page-item-detail {
     position: absolute;
   }
 }
+
+.custom-navbar{
+  background-color: transparent;
+  padding: 0;
+
+  .item-inner {
+    padding-right: 0 !important;
+    border-bottom: 0 !important;
+  }
+
+
+  &.item-md.item-toggle ion-label {
+    margin-left: 0;
+    font-size: 2rem;
+  }
+}
+

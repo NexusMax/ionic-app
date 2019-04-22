@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { Items, Api, Auth } from '../../providers';
+import {Item} from "../../models/item";
 
 @IonicPage()
 @Component({
@@ -21,12 +22,20 @@ export class ItemDetailPage {
     items: Items
   ) {
     this.item = navParams.get('item') || items.defaultItem;
+    this.item.completed = true;
     this.getGroups( this.item.id ).subscribe((res: any) => {
       console.log(this.usersGroup) ;
     });
   }
 
-
+  updateItem( item: Item ) {
+    console.log(item);
+    if( item.completed ){
+      this.addGroup( item.id );
+    }else{
+      this.removeGroup( item.id );
+    }
+  }
   getGroups( groudId: Number){
 
     let info = {
@@ -38,6 +47,38 @@ export class ItemDetailPage {
     seq.subscribe((res: any) => {
       // console.log( res );
       this.usersGroup = res.users;
+    }, err => {
+      console.error('ERROR', err);
+    });
+    return seq;
+  }
+  addGroup( groupId: Number ){
+
+    let info = {
+      'token': this.auth.getToken(),
+      'group_id': groupId
+    };
+    let seq = this.api.post('group/my/add', info).share();
+
+    seq.subscribe((res: any) => {
+      console.log( res );
+
+    }, err => {
+      console.error('ERROR', err);
+    });
+    return seq;
+  }
+
+  removeGroup( groupId: Number ){
+
+    let info = {
+      'token': this.auth.getToken(),
+      'group_id': groupId
+    };
+    let seq = this.api.post('group/my/remove', info).share();
+
+    seq.subscribe((res: any) => {
+      console.log( res );
     }, err => {
       console.error('ERROR', err);
     });
