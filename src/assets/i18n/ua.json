@@ -49,6 +49,13 @@
   "ITEM_CREATE_TITLE": "Новий елемент",
   "ITEM_CREATE_CHOOSE_IMAGE": "Додати зображення",
 
+  "DEFAULT_VALUE_IF_TEACHER_NOT_HAVE_GROUPS_TITLE": "Ви не підписані на групи",
+  "DEFAULT_VALUE_IF_TEACHER_NOT_HAVE_SCIENCE_TITLE": "Предметів не знайдено",
+  "DEFAULT_VALUE_IF_TEACHER_NOT_HAVE_GROUPS_LINK": "Перейти до списку груп",
+  "DEFAULT_VALUE_IF_TEACHER_NOT_HAVE_SCIENCE_LINK": "Створити предмет",
+  "DEFAULT_VALUE_IF_TEACHER_NOT_HAVE_GROUPS_DESC": "Щоб підписатись на групу, натисніть будь-ласту на кнопку!",
+  "DEFAULT_VALUE_IF_TEACHER_NOT_HAVE_SCIENCE_DESC": "Щоб додати предмет в групу, натисніть будь-ласту на кнопку!",
+
   "CARDS_TITLE": "Соціальний",
 
   "SEARCH_TITLE": "Список груп"

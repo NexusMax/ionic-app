@@ -13,6 +13,7 @@ import { Items, Api, Auth } from '../../providers';
 export class ListMasterPage {
   currentItems: Item[];
   groupItems: any[];
+  tabs;
 
   constructor(
     public navCtrl: NavController,
@@ -21,6 +22,7 @@ export class ListMasterPage {
     public auth: Auth,
     public modalCtrl: ModalController
   ) {
+    this.tabs = navCtrl.parent;
     this.currentItems = this.items.query();
     this.getGroups();
 
@@ -83,5 +85,13 @@ export class ListMasterPage {
       console.error('ERROR', err);
     });
     return seq;
+  }
+
+  openPageSearch(){
+
+
+    this.tabs.select(1);
+
+    //this.navCtrl.setRoot('SearchPage');
   }
 }

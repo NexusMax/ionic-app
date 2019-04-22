@@ -61,7 +61,7 @@ export class SearchPage {
   getSearchGroups( param: any ){
     let info = {
       'token': this.auth.getToken(),
-      'param': param
+      'group_name': param
     };
     let seq = this.api.get('group/search', info).share();
 

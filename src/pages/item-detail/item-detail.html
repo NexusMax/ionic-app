@@ -14,19 +14,70 @@
 
 <ion-content>
 
-  <ion-list>
-    <ion-item-sliding *ngFor="let item of usersGroup">
-      <button ion-item (click)="openItem(item)">
-        <h2>{{item.first_name + ' ' + item.last_name + ' ' + item.second_name}}</h2>
-        <ion-note item-end *ngIf="item.id">{{'ID: ' + item.id}}</ion-note>
-      </button>
+  <ion-segment [(ngModel)]="segment" (ionChange)="segmentChanged($event)">
+    <ion-segment-button value="users">
+      <ion-label>Студенти</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="science">
+      <ion-label>Предмети</ion-label>
+    </ion-segment-button>
+  </ion-segment>
 
-      <ion-item-options>
-        <button ion-button color="danger" (click)="deleteItem(item)">
-          {{ 'DELETE_BUTTON' | translate }}
+  <div *ngIf="segment == 'users'">
+
+    <ion-list>
+      <ion-item-sliding *ngFor="let item of usersGroup">
+        <button ion-item (click)="openItem(item)">
+          <h2>{{item.first_name + ' ' + item.last_name + ' ' + item.second_name}}</h2>
+          <ion-note item-end *ngIf="item.id">{{'ID: ' + item.id}}</ion-note>
         </button>
-      </ion-item-options>
-    </ion-item-sliding>
-  </ion-list>
+
+        <ion-item-options>
+          <button ion-button color="danger" (click)="deleteItem(item)">
+            {{ 'DELETE_BUTTON' | translate }}
+          </button>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+
+  </div>
+
+  <div *ngIf="segment == 'science'">
+    <ion-list *ngIf="sieceList?.length > 0; else elseBlock">
+      <ion-item-sliding *ngFor="let item of sieceList">
+        <button ion-item (click)="openItem(item)">
+          <h2>{{item.first_name + ' ' + item.last_name + ' ' + item.second_name}}</h2>
+          <ion-note item-end *ngIf="item.id">{{'ID: ' + item.id}}</ion-note>
+        </button>
+
+        <ion-item-options>
+          <button ion-button color="danger" (click)="deleteItem(item)">
+            {{ 'DELETE_BUTTON' | translate }}
+          </button>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+
+    <ng-template #elseBlock>
+
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>{{ 'DEFAULT_VALUE_IF_TEACHER_NOT_HAVE_SCIENCE_TITLE' | translate }}</ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+          {{ 'DEFAULT_VALUE_IF_TEACHER_NOT_HAVE_SCIENCE_DESC' | translate }}
+          <div>
+            <button ion-button (click)="openPageSearch()" color="primary">{{ 'DEFAULT_VALUE_IF_TEACHER_NOT_HAVE_SCIENCE_LINK' | translate }}</button>
+
+          </div>
+        </ion-card-content>
+      </ion-card>
+
+    </ng-template>
+  </div>
+
+
+
 
 </ion-content>

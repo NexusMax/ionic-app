@@ -14,7 +14,7 @@
 
 <ion-content>
 
-  <ion-list>
+  <ion-list *ngIf="groupItems?.length > 0; else elseBlock">
     <ion-item-sliding *ngFor="let item of groupItems">
       <button ion-item (click)="openItem(item)">
         <h2>{{item.name}}</h2>
@@ -28,4 +28,21 @@
       </ion-item-options>
     </ion-item-sliding>
   </ion-list>
+
+  <ng-template #elseBlock>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>{{ 'DEFAULT_VALUE_IF_TEACHER_NOT_HAVE_GROUPS_TITLE' | translate }}</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        {{ 'DEFAULT_VALUE_IF_TEACHER_NOT_HAVE_GROUPS_DESC' | translate }}
+        <div>
+          <button ion-button (click)="openPageSearch()" color="primary">{{ 'DEFAULT_VALUE_IF_TEACHER_NOT_HAVE_GROUPS_LINK' | translate }}</button>
+
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </ng-template>
+
 </ion-content>

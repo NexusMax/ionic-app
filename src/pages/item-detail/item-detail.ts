@@ -13,6 +13,9 @@ export class ItemDetailPage {
   item: any;
   groupDetails: any[];
   usersGroup: any[];
+  sieceList: any[];
+
+  segment = 'users';
 
   constructor(
     public navCtrl: NavController,
@@ -28,6 +31,13 @@ export class ItemDetailPage {
     });
   }
 
+  segmentChanged(ev: any) {
+    console.log('Segment changed', ev.value);
+    if(ev.value == 'science'){
+      this.getSienceGroup( this.item.id );
+    }
+  }
+
   updateItem( item: Item ) {
     console.log(item);
     if( item.completed ){
@@ -35,6 +45,19 @@ export class ItemDetailPage {
     }else{
       this.removeGroup( item.id );
     }
+  }
+  getSienceGroup( groudId: Number){
+
+    let info = {
+      'token': this.auth.getToken(),
+      'group_id': groudId
+    };
+    let seq = this.api.post('group/science', info).share();
+
+    seq.subscribe((res: any) => {
+      this.sieceList = res.users;
+    });
+    return seq;
   }
   getGroups( groudId: Number){
 

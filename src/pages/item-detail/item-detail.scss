@@ -1,4 +1,9 @@
 page-item-detail {
+  .button-md-primary{
+    display: block;
+    width: 100%;
+    margin-top: 15px;
+  }
   .item-profile {
     width: 100%;
     background-position: center center;
@@ -27,5 +32,17 @@ page-item-detail {
     margin-left: 0;
     font-size: 2rem;
   }
+}
+
+.segment-md .segment-button{
+
+  align-items: center;
+  display: flex;
+}
+.segment-md .segment-button.activated,
+.segment-md .segment-button.segment-activated {
+  border-color: #488aff;
+  opacity: 1;
+  background: #f8f8f8;
 }
 
