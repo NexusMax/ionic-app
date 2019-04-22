@@ -27,7 +27,7 @@ import { Auth } from '../auth/auth';
 @Injectable()
 export class User {
   _user: any;
-  private isLoggedIn = false;
+  //private isLoggedIn = false;
   private isLoggedInStorage = 'isLoggedIn';
   private userStorage = 'user';
 
@@ -93,14 +93,14 @@ export class User {
   }
 
   logout() : void {
-    this.isLoggedIn = false;
+    //this.isLoggedIn = false;
     this._user = null;
     this.auth.removeToken();
   }
 
   _login(res: any = '') : void {
     this._user = res.user;
-    this.isLoggedIn = true;
+    //this.isLoggedIn = true;
     localStorage.setItem( this.userStorage, JSON.stringify(res.user) );
     localStorage.setItem( this.isLoggedInStorage, 'true' );
 

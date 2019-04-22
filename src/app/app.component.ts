@@ -59,7 +59,7 @@ export class MyApp {
   initTranslate() {
     // Set the default language for translation strings, and the current language.
     this.translate.setDefaultLang('ua');
-    const browserLang = this.translate.getBrowserLang();
+    //const browserLang = this.translate.getBrowserLang();
 
     // if (browserLang) {
     //   if (browserLang === 'zh') {
