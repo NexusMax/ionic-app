@@ -31,14 +31,12 @@ export class SearchPage {
    * Perform a service for the proper items.
    */
   getItems(ev) {
+
     let val = ev.target.value;
     if (!val || !val.trim()) {
-      this.currentItems = [];
       return;
     }
-    this.currentItems = this.items.query({
-      name: val
-    });
+    this.getSearchGroups(val);
   }
 
   /**
@@ -59,6 +57,24 @@ export class SearchPage {
     }
 
   }
+
+  getSearchGroups( param: any ){
+    let info = {
+      'token': this.auth.getToken(),
+      'param': param
+    };
+    let seq = this.api.get('group/search', info).share();
+
+    seq.subscribe((res: any) => {
+      console.log( res );
+      this.currentItems = res.data;
+    }, err => {
+      console.error('ERROR', err);
+    });
+    return seq;
+  }
+
+
   getGroups( ){
 
     let info = {
