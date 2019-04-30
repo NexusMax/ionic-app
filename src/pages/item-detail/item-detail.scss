@@ -16,6 +16,28 @@ page-item-detail {
     background: white;
     position: absolute;
   }
+
+  .ion-list-custom{
+    .item-wrapper {
+      display: flex;
+      overflow: visible;
+
+      ion-item-options{
+        display: flex;
+        position: relative;
+        visibility: visible;
+        height: auto;
+      }
+
+      &:last-child{
+        ion-item-options{
+          border-bottom: none;
+        }
+      }
+    }
+
+
+  }
 }
 
 .custom-navbar{

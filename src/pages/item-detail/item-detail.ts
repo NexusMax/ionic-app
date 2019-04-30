@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 
 import { Items, Api, Auth } from '../../providers';
 import {Item} from "../../models/item";
+import {TranslateService} from "@ngx-translate/core";
 
 @IonicPage()
 @Component({
@@ -22,7 +23,9 @@ export class ItemDetailPage {
     public api: Api,
     public auth: Auth,
     navParams: NavParams,
-    items: Items
+    items: Items,
+    public translateService: TranslateService,
+    public toastCtrl: ToastController
   ) {
     this.item = navParams.get('item') || items.defaultItem;
     this.item.completed = true;
@@ -46,19 +49,81 @@ export class ItemDetailPage {
       this.removeGroup( item.id );
     }
   }
+
+  updateScience( item: any ){
+    if( item.completed ){
+      this.addScienceToGroup( this.item.id, item.id );
+    }else{
+      this.removeScienceFromGroup( this.item.id, item.id);
+    }
+  }
+
+
+  addScienceToGroup( groupId: number, scienceId: number ){
+    let info = {
+      'token': this.auth.getToken(),
+      'course_id': scienceId,
+      'group_id': groupId
+    };
+    let seq = this.api.post('course/my/add', info).share();
+
+    seq.subscribe((res: any) => {
+
+      let message = '';
+      this.translateService.get('SCIENCE_ADD_TO_GROUP').subscribe((value) => {
+        message = value;
+      });
+
+      let toast = this.toastCtrl.create({
+        message: message,
+        duration: 5000,
+        position: 'top'
+      });
+      toast.present();
+
+    });
+    return seq;
+  }
+
+  removeScienceFromGroup( groupId: number, scienceId: number ){
+    let info = {
+      'token': this.auth.getToken(),
+      'course_id': scienceId,
+      'group_id': groupId
+    };
+    let seq = this.api.post('course/my/remove', info).share();
+
+    seq.subscribe((res: any) => {
+      let message = '';
+      this.translateService.get('SCIENCE_REMOVE_TO_GROUP').subscribe((value) => {
+        message = value;
+      });
+
+      let toast = this.toastCtrl.create({
+        message: message,
+        duration: 5000,
+        position: 'top'
+      });
+      toast.present();
+    });
+    return seq;
+  }
+
+
   getSienceGroup( groudId: Number){
 
     let info = {
       'token': this.auth.getToken(),
-      'group_id': groudId
+      'group_id': this.item.id
     };
-    let seq = this.api.post('group/science', info).share();
+    let seq = this.api.get('course/my', info).share();
 
     seq.subscribe((res: any) => {
-      this.sieceList = res.users;
+      this.sieceList = res.data;
     });
     return seq;
   }
+
   getGroups( groudId: Number){
 
     let info = {

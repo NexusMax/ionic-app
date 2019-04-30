@@ -7,8 +7,8 @@
   "SIGNUP": "Реєстрація",
 
   "TAB1_TITLE": "Мої групи",
-  "TAB2_TITLE": "Список груп",
-  "TAB3_TITLE": "Налаштування",
+  "TAB2_TITLE": "Групи",
+  "TAB3_TITLE": "Предмети",
 
   "MAP_TITLE": "Мапа",
 
@@ -36,6 +36,7 @@
 
   "LOGIN_TITLE": "Вхід",
   "LOGIN_ERROR": "Неможливо увійти. Будь ласка перевірте інформацію Вашого облікового запису та спробуйте увійти ще раз.",
+  "SCIENCE_ERROR": "Помилка! Будь ласка перевірте інформацію та спробуйте ще раз.",
   "LOGIN_BUTTON": "Увійти",
   "SIGNUP_TITLE": "Реєстрація",
   "SIGNUP_ERROR": "Неможливо створити обліковий запис. Будь ласка перевірте інформацію Вашого облікового запису та спробуйте ще раз.",
@@ -53,10 +54,18 @@
   "DEFAULT_VALUE_IF_TEACHER_NOT_HAVE_SCIENCE_TITLE": "Предметів не знайдено",
   "DEFAULT_VALUE_IF_TEACHER_NOT_HAVE_GROUPS_LINK": "Перейти до списку груп",
   "DEFAULT_VALUE_IF_TEACHER_NOT_HAVE_SCIENCE_LINK": "Створити предмет",
-  "DEFAULT_VALUE_IF_TEACHER_NOT_HAVE_GROUPS_DESC": "Щоб підписатись на групу, натисніть будь-ласту на кнопку!",
-  "DEFAULT_VALUE_IF_TEACHER_NOT_HAVE_SCIENCE_DESC": "Щоб додати предмет в групу, натисніть будь-ласту на кнопку!",
+  "DEFAULT_VALUE_IF_TEACHER_NOT_HAVE_GROUPS_DESC": "Щоб підписатись на групу, натисніть будь-ласка на кнопку!",
+  "DEFAULT_VALUE_IF_TEACHER_NOT_HAVE_SCIENCE_DESC": "Щоб додати предмет в групу, натисніть будь-ласка на кнопку!",
 
+  "CREATE_SCIENCE": "Створити предмет",
+  "SCIENCE_LIST": "Список предметів",
+  "SCIENCE_NAME": "Назва предмету",
+  "SCIENCE_CREATE": "Створено новий предмет",
+  "SCIENCE_REMOVE_TO_GROUP": "Ви видалили предмет з групи",
+  "SCIENCE_ADD_TO_GROUP": "Ви додали предмет до групи",
   "CARDS_TITLE": "Соціальний",
+
+  "SAVE_BUTTON": "Зберігти",
 
   "SEARCH_TITLE": "Список груп"
 }

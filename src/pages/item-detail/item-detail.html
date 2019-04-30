@@ -43,18 +43,17 @@
   </div>
 
   <div *ngIf="segment == 'science'">
-    <ion-list *ngIf="sieceList?.length > 0; else elseBlock">
-      <ion-item-sliding *ngFor="let item of sieceList">
+    <ion-list class="ion-list-custom" *ngIf="sieceList?.length > 0; else elseBlock">
+      <ion-item-sliding *ngFor="let item of sieceList" >
         <button ion-item (click)="openItem(item)">
-          <h2>{{item.first_name + ' ' + item.last_name + ' ' + item.second_name}}</h2>
+          <h2>{{item.name}}</h2>
           <ion-note item-end *ngIf="item.id">{{'ID: ' + item.id}}</ion-note>
-        </button>
 
+        </button>
         <ion-item-options>
-          <button ion-button color="danger" (click)="deleteItem(item)">
-            {{ 'DELETE_BUTTON' | translate }}
-          </button>
+          <ion-toggle [(ngModel)]="item.completed" (ionChange)="updateScience(item)"></ion-toggle>
         </ion-item-options>
+
       </ion-item-sliding>
     </ion-list>
 

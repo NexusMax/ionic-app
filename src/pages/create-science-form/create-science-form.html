@@ -1,0 +1,25 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{ 'CREATE_SCIENCE' | translate }}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <form (submit)="createScience()">
+    <ion-list>
+
+      <ion-item>
+        <ion-label floating>{{ 'SCIENCE_NAME' | translate }}</ion-label>
+        <ion-input type="text" [(ngModel)]="course_name" name="course_name"></ion-input>
+      </ion-item>
+
+      <div padding>
+        <button ion-button color="primary" block>{{ 'SAVE_BUTTON' | translate }}</button>
+      </div>
+
+    </ion-list>
+  </form>
+</ion-content>
