@@ -13,10 +13,10 @@ import {CreateSciencePage} from "../create-science/create-science";
 
 @IonicPage()
 @Component({
-  selector: 'page-create-science-form',
-  templateUrl: 'create-science-form.html',
+  selector: 'page-create-themes-form',
+  templateUrl: 'create-themes-form.html',
 })
-export class CreateScienceFormPage {
+export class CreateThemesFormPage {
 
   course_name: string = '';
 

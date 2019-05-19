@@ -1,5 +1,19 @@
 page-search {
 
+  .pagination{
+    list-style: none;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+    li{
+      display: inline-block;
+      a{
+        font-size: 2rem;
+      }
+    }
+  }
+
 }
 
 

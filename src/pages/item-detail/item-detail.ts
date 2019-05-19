@@ -135,6 +135,7 @@ export class ItemDetailPage {
     seq.subscribe((res: any) => {
       // console.log( res );
       this.usersGroup = res.users;
+
     }, err => {
       console.error('ERROR', err);
     });
@@ -150,6 +151,18 @@ export class ItemDetailPage {
 
     seq.subscribe((res: any) => {
       console.log( res );
+
+      let message = '';
+      this.translateService.get('GROUP_ADD_THIS').subscribe((value) => {
+        message = value;
+      });
+
+      let toast = this.toastCtrl.create({
+        message: message,
+        duration: 3000,
+        position: 'top'
+      });
+      toast.present();
 
     }, err => {
       console.error('ERROR', err);
@@ -167,6 +180,18 @@ export class ItemDetailPage {
 
     seq.subscribe((res: any) => {
       console.log( res );
+
+      let message = '';
+      this.translateService.get('GROUP_REMOVE_THIS').subscribe((value) => {
+        message = value;
+      });
+
+      let toast = this.toastCtrl.create({
+        message: message,
+        duration: 3000,
+        position: 'top'
+      });
+      toast.present();
     }, err => {
       console.error('ERROR', err);
     });

@@ -14,10 +14,10 @@ import {TranslateService} from "@ngx-translate/core";
 
 @IonicPage()
 @Component({
-  selector: 'page-create-science',
-  templateUrl: 'create-science.html',
+  selector: 'page-create-themes',
+  templateUrl: 'create-themes.html',
 })
-export class CreateSciencePage {
+export class CreateThemesPage {
 
   sieceList: any[];
 

@@ -46,6 +46,13 @@
   "LIST_GROUP_TITLE": "Список моїх груп",
 
   "GROUP": "Група",
+  "GROUP_ADD": "До списку моїх груп додана:",
+  "GROUP_ADD_THIS": "Група додана до списку моїх груп",
+  "GROUP_REMOVE": "З списку моїх видалена група:",
+  "GROUP_REMOVE_THIS": "Група видалена з списку моїх груп",
+  "SEARCH_PLACEHOLDER": "Введіть назву групи",
+
+  "DELETE_BUTTON": "Видалити",
 
   "ITEM_CREATE_TITLE": "Новий елемент",
   "ITEM_CREATE_CHOOSE_IMAGE": "Додати зображення",
@@ -58,14 +65,22 @@
   "DEFAULT_VALUE_IF_TEACHER_NOT_HAVE_SCIENCE_DESC": "Щоб додати предмет в групу, натисніть будь-ласка на кнопку!",
 
   "CREATE_SCIENCE": "Створити предмет",
+  "EDIT_SCIENCE": "Редагувати предмет",
   "SCIENCE_LIST": "Список предметів",
   "SCIENCE_NAME": "Назва предмету",
   "SCIENCE_CREATE": "Створено новий предмет",
-  "SCIENCE_REMOVE_TO_GROUP": "Ви видалили предмет з групи",
-  "SCIENCE_ADD_TO_GROUP": "Ви додали предмет до групи",
+  "SCIENCE_EDIT": "Відредаговано предмет",
+  "SCIENCE_REMOVE": "Предмет видалено",
+  "SCIENCE_REMOVE_TO_GROUP": "Предмет видалено з групи",
+  "SCIENCE_ADD_TO_GROUP": "Предмет додано до групи",
   "CARDS_TITLE": "Соціальний",
 
-  "SAVE_BUTTON": "Зберігти",
+  "SAVE_BUTTON": "Зберегти",
+  "EDIT_BUTTON": "Редагувати",
 
-  "SEARCH_TITLE": "Список груп"
+  "SEARCH_TITLE": "Список груп",
+  "SEARCH_FIRST": "Перша",
+  "SEARCH_PREVIOUS": "Попередня",
+  "SEARCH_NEXT": "Наступна",
+  "SEARCH_LAST": "Остання"
 }
