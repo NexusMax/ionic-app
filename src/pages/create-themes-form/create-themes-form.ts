@@ -18,7 +18,7 @@ import {CreateSciencePage} from "../create-science/create-science";
 })
 export class CreateThemesFormPage {
 
-  course_name: string = '';
+  theme_name: string = '';
 
   private loginErrorString: string;
 
@@ -27,6 +27,9 @@ export class CreateThemesFormPage {
   edit: boolean = false;
   title: string;
   submitButtonText: string;
+
+  groupId: number;
+  scienceId: number;
 
 
   constructor(
@@ -38,21 +41,23 @@ export class CreateThemesFormPage {
     public translateService: TranslateService
   ) {
 
-    this.translateService.get('SCIENCE_ERROR').subscribe((value) => {
+    this.translateService.get('THEMES_ERROR').subscribe((value) => {
       this.loginErrorString = value;
     });
 
     this.item = this.navParams.get('item');
+    this.groupId = this.navParams.get('group_id');
+    this.scienceId = this.navParams.get('course_id');
 
     if( this.item ){
       this.edit = true;
-      this.course_name = this.item.name;
+      this.theme_name = this.item.name;
     }
 
     let titleKey = 'CREATE_SCIENCE';
     let submitButtonTextKey = 'SAVE_BUTTON';
     if( this.edit ){
-      titleKey = 'EDIT_SCIENCE';
+      titleKey = 'EDIT_THEMES';
       //submitButtonTextKey = 'EDIT_BUTTON';
     }
 
@@ -66,7 +71,7 @@ export class CreateThemesFormPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad CreateScienceFormPage');
+    console.log('ionViewDidLoad CreateThemesFormPage');
   }
 
   save(){
@@ -81,16 +86,18 @@ export class CreateThemesFormPage {
 
     let info = {
       'token': this.auth.getToken(),
-      'course_name': this.course_name
+      'theme_name': this.theme_name,
+      'course_id': this.scienceId,
+      'group_id': this.groupId
     };
 
-    let seq = this.api.post('course/create', info).share();
+    let seq = this.api.post('theme/create', info).share();
 
     seq.subscribe((res: any) => {
       console.log( res );
 
-      this.navCtrl.setRoot('CreateSciencePage', {
-        'showNewScience': this.course_name
+      this.navCtrl.setRoot('CreateThemesPage', {
+        'showNewThemes': this.theme_name
       });
     }, (res: any) => {
       console.log( res );
@@ -108,17 +115,17 @@ export class CreateThemesFormPage {
   editScience(){
     let info = {
       'token': this.auth.getToken(),
-      'course_name': this.course_name,
-      'course_id': this.item.id
+      'theme_name': this.theme_name,
+      'theme_id': this.item.id
     };
 
-    let seq = this.api.post('course/edit', info).share();
+    let seq = this.api.post('theme/edit', info).share();
 
     seq.subscribe((res: any) => {
       console.log( res );
 
-      this.navCtrl.setRoot('CreateSciencePage', {
-        'showEditScience': this.course_name
+      this.navCtrl.setRoot('CreateThemesPage', {
+        'showEditThemes': this.theme_name
       });
     }, (res: any) => {
       console.log( res );

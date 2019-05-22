@@ -2,7 +2,7 @@
 
   <ion-navbar>
     <ion-title class="custom-title">
-      <div class="title-name">{{ 'SCIENCE_LIST' | translate }}</div>
+      <div class="title-name">{{ 'THEMES_LIST' | translate }}</div>
       <button ion-button clear class="custom-button" (click)="openPageCreate()"><ion-icon name="add"></ion-icon></button>
     </ion-title>
   </ion-navbar>
@@ -31,13 +31,13 @@
 
     <ion-card>
       <ion-card-header>
-        <ion-card-title>{{ 'DEFAULT_VALUE_IF_TEACHER_NOT_HAVE_SCIENCE_TITLE' | translate }}</ion-card-title>
+        <ion-card-title>{{ 'DEFAULT_VALUE_IF_TEACHER_NOT_HAVE_THEMES_TITLE' | translate }}</ion-card-title>
       </ion-card-header>
 
       <ion-card-content>
-        {{ 'DEFAULT_VALUE_IF_TEACHER_NOT_HAVE_SCIENCE_DESC' | translate }}
+        {{ 'DEFAULT_VALUE_IF_TEACHER_NOT_HAVE_THEMES_DESC' | translate }}
         <div>
-          <button ion-button (click)="openPageCreate()" color="primary">{{ 'DEFAULT_VALUE_IF_TEACHER_NOT_HAVE_SCIENCE_LINK' | translate }}</button>
+          <button ion-button (click)="openPageCreate()" color="primary">{{ 'DEFAULT_VALUE_IF_TEACHER_NOT_HAVE_THEMES_LINK' | translate }}</button>
 
         </div>
       </ion-card-content>

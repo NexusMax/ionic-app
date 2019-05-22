@@ -15,31 +15,18 @@
 <ion-content>
 
   <ion-segment [(ngModel)]="segment" (ionChange)="segmentChanged($event)">
-    <ion-segment-button value="users">
-      <ion-label>Студенти</ion-label>
-    </ion-segment-button>
     <ion-segment-button value="science">
-      <ion-label>Предмети</ion-label>
+      <ion-label>{{ 'SCIENCE' | translate }}</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="users">
+      <ion-label>{{ 'STUDENTS' | translate }}</ion-label>
     </ion-segment-button>
   </ion-segment>
-
-  <div *ngIf="segment == 'users'">
-
-    <ion-list>
-      <ion-item-sliding *ngFor="let item of usersGroup">
-        <button ion-item (click)="openItem(item)">
-          <h2>{{ item.last_name + ' ' + item.first_name + ' ' + item.second_name}}</h2>
-          <ion-note item-end *ngIf="item.id">{{'ID: ' + item.id}}</ion-note>
-        </button>
-      </ion-item-sliding>
-    </ion-list>
-
-  </div>
 
   <div *ngIf="segment == 'science'">
     <ion-list class="ion-list-custom" *ngIf="sieceList?.length > 0; else elseBlock">
       <ion-item-sliding *ngFor="let item of sieceList" >
-        <button ion-item (click)="openItem(item)">
+        <button ion-item (click)="openThemes(item)">
           <h2>{{item.name}}</h2>
           <ion-note item-end *ngIf="item.id">{{'ID: ' + item.id}}</ion-note>
 
@@ -70,6 +57,18 @@
     </ng-template>
   </div>
 
+  <div *ngIf="segment == 'users'">
+
+    <ion-list>
+      <ion-item-sliding *ngFor="let item of usersGroup">
+        <button ion-item (click)="openItem(item)">
+          <h2>{{ item.last_name + ' ' + item.first_name + ' ' + item.second_name}}</h2>
+          <ion-note item-end *ngIf="item.id">{{'ID: ' + item.id}}</ion-note>
+        </button>
+      </ion-item-sliding>
+    </ion-list>
+
+  </div>
 
 
 

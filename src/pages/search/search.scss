@@ -11,6 +11,11 @@ page-search {
       a{
         font-size: 2rem;
       }
+      &.active{
+        a{
+          color: #000;
+        }
+      }
     }
   }
 

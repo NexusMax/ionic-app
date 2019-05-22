@@ -82,5 +82,19 @@
   "SEARCH_FIRST": "Перша",
   "SEARCH_PREVIOUS": "Попередня",
   "SEARCH_NEXT": "Наступна",
-  "SEARCH_LAST": "Остання"
+  "SEARCH_LAST": "Остання",
+
+  "THEMES_LIST": "Список тем",
+  "CREATE_THEMES": "Додати тему",
+  "EDIT_THEMES": "Редагувати тему",
+  "THEMES_ERROR": "Помилка! Будь ласка перевірте інформацію та спробуйте ще раз.",
+
+  "DEFAULT_VALUE_IF_TEACHER_NOT_HAVE_THEMES_TITLE": "Тем не знайдено",
+  "DEFAULT_VALUE_IF_TEACHER_NOT_HAVE_THEMES_LINK": "Додати тему",
+  "DEFAULT_VALUE_IF_TEACHER_NOT_HAVE_THEMES_DESC": "Щоб додати тему, натисніть будь-ласка на кнопку!",
+
+
+  "STUDENTS": "Студенти",
+  "SCIENCE": "Предмети"
+
 }

@@ -4,6 +4,7 @@ import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angu
 import { Items, Api, Auth } from '../../providers';
 import {Item} from "../../models/item";
 import {TranslateService} from "@ngx-translate/core";
+import {CreateThemesPage} from "../create-themes/create-themes";
 
 @IonicPage()
 @Component({
@@ -16,7 +17,7 @@ export class ItemDetailPage {
   usersGroup: any[];
   sieceList: any[];
 
-  segment = 'users';
+  segment = 'science';
 
   constructor(
     public navCtrl: NavController,
@@ -29,20 +30,20 @@ export class ItemDetailPage {
   ) {
     this.item = navParams.get('item') || items.defaultItem;
     this.item.completed = true;
+    this.getSienceGroup( this.item.id );
     this.getGroups( this.item.id ).subscribe((res: any) => {
-      console.log(this.usersGroup) ;
+     console.log(this.usersGroup) ;
     });
+
   }
 
   segmentChanged(ev: any) {
-    console.log('Segment changed', ev.value);
     if(ev.value == 'science'){
       this.getSienceGroup( this.item.id );
     }
   }
 
   updateItem( item: Item ) {
-    console.log(item);
     if( item.completed ){
       this.addGroup( item.id );
     }else{
@@ -196,6 +197,19 @@ export class ItemDetailPage {
       console.error('ERROR', err);
     });
     return seq;
+  }
+
+
+  openThemes(item: any){
+
+    console.log( item );
+
+    this.navCtrl.push('CreateThemesPage', {
+      item: item,
+      group_id: this.item.id
+    });
+
+
   }
 
 }

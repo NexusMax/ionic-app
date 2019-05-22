@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import {IonicPage, NavController, NavParams, ToastController} from 'ionic-angular';
 import { Items, Api, Auth } from '../../providers';
 import {SettingsPage} from "../settings/settings";
-import {CreateScienceFormPage} from "../create-science-form/create-science-form";
+import {CreateThemesFormPage} from "../create-themes-form/create-themes-form";
 import {TranslateService} from "@ngx-translate/core";
 
 /**
@@ -21,6 +21,9 @@ export class CreateThemesPage {
 
   sieceList: any[];
 
+  science: any;
+  groupId: number;
+
 
   constructor(
     public navCtrl: NavController,
@@ -30,28 +33,33 @@ export class CreateThemesPage {
     public auth: Auth,
     public translateService: TranslateService
   ){
-    this.getSience();
+    let showNewThemes = this.navParams.get('showNewThemes');
 
-    let showNewScience = this.navParams.get('showNewScience');
-    let showEditScience = this.navParams.get('showEditScience');
+    let showEditThemes = this.navParams.get('showEditThemes');
+    this.science = this.navParams.get('item');
+    this.groupId = this.navParams.get('group_id');
 
-    if( showNewScience || showEditScience ){
+    console.log( this.science );
+
+    this.getThemes( this.groupId, this.science.id );
+
+    if( showNewThemes || showEditThemes ){
 
       let message = '';
 
       let key = 'SCIENCE_CREATE';
-      let scienceName = showNewScience;
-      if( showEditScience ){
+      let themesName = showNewThemes;
+      if( showEditThemes ){
         key = 'SCIENCE_EDIT';
-        scienceName = showEditScience;
+        themesName = showEditThemes;
       }
       this.translateService.get(key).subscribe((value) => {
         message = value;
       });
 
       let toast = this.toastCtrl.create({
-        message: message + ': ' + scienceName,
-        duration: 5000,
+        message: message + ': ' + themesName,
+        duration: 3000,
         position: 'top'
       });
       toast.present();
@@ -59,11 +67,11 @@ export class CreateThemesPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad CreateSciencePage');
+    console.log('ionViewDidLoad CreateThemesPage');
   }
 
   ionViewWillEnter(){
-    this.getSience();
+    this.getThemes(this.groupId, this.science.id);
   }
 
   deleteItem(itemId: Number) {
@@ -92,12 +100,14 @@ export class CreateThemesPage {
     return seq;
   }
 
-  getSience( ){
+  getThemes( group_id: number, course_id: number){
 
     let info = {
-      'token': this.auth.getToken()
+      'token': this.auth.getToken(),
+      'group_id': group_id,
+      'course_id': course_id,
     };
-    let seq = this.api.get('course/my', info).share();
+    let seq = this.api.get('course/themes', info).share();
 
     seq.subscribe((res: any) => {
       console.log( res );
@@ -107,12 +117,19 @@ export class CreateThemesPage {
   }
 
   openPageCreate(){
-    this.navCtrl.push('CreateScienceFormPage');
+    this.navCtrl.push('CreateThemesFormPage',
+      {
+        'group_id': this.groupId,
+        'course_id': this.science.id
+      }
+    );
   }
 
   openItem(item: any){
-    this.navCtrl.push('CreateScienceFormPage', {
-      'item': item
+    this.navCtrl.push('CreateThemesFormPage', {
+      'item': item,
+      'group_id': this.groupId,
+      'course_id': this.science.id
     });
   }
 }
