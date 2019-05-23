@@ -204,12 +204,28 @@ export class ItemDetailPage {
 
 
   openThemes(item: any){
-    this.navCtrl.setRoot('CreateThemesPage', {
-      item: item,
-      science: item,
-      group: this.item,
-      group_id: this.item.id
-    });
+
+    console.log( item.completed );
+    if( item.completed ){
+      this.navCtrl.setRoot('CreateThemesPage', {
+        item: item,
+        science: item,
+        group: this.item,
+        group_id: this.item.id
+      });
+    }else{
+      let message = '';
+      this.translateService.get('GROUP_ADD_LIST').subscribe((value) => {
+        message = value;
+      });
+
+      let toast = this.toastCtrl.create({
+        message: message,
+        duration: 3000,
+        position: 'top'
+      });
+      toast.present();
+    }
   }
 
 }
