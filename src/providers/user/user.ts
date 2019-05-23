@@ -83,6 +83,13 @@ export class User {
     //return this._user;
   }
 
+  isTeacher(){
+    if( this.getUser().status === 1 ){
+      return true;
+    }
+    return false;
+  }
+
   authenticated() : boolean {
 
     if( localStorage.getItem( this.isLoggedInStorage ) === 'true' ){
