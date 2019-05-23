@@ -30,6 +30,8 @@ export class CreateThemesFormPage {
 
   groupId: number;
   scienceId: number;
+  science: any;
+  group: any;
 
 
   constructor(
@@ -46,15 +48,17 @@ export class CreateThemesFormPage {
     });
 
     this.item = this.navParams.get('item');
+    this.group = this.navParams.get('group');
+    this.science = this.navParams.get('science');
+    this.edit = this.navParams.get('edit');
     this.groupId = this.navParams.get('group_id');
     this.scienceId = this.navParams.get('course_id');
 
-    if( this.item ){
-      this.edit = true;
+    if( this.edit ){
       this.theme_name = this.item.name;
     }
 
-    let titleKey = 'CREATE_SCIENCE';
+    let titleKey = 'CREATE_THEMES';
     let submitButtonTextKey = 'SAVE_BUTTON';
     if( this.edit ){
       titleKey = 'EDIT_THEMES';
@@ -97,7 +101,11 @@ export class CreateThemesFormPage {
       console.log( res );
 
       this.navCtrl.setRoot('CreateThemesPage', {
-        'showNewThemes': this.theme_name
+        'showNewThemes': this.theme_name,
+        'item': this.science,
+        'group_id': this.groupId,
+        'science': this.science,
+        'group': this.group
       });
     }, (res: any) => {
       console.log( res );
@@ -125,7 +133,11 @@ export class CreateThemesFormPage {
       console.log( res );
 
       this.navCtrl.setRoot('CreateThemesPage', {
-        'showEditThemes': this.theme_name
+        'showEditThemes': this.theme_name,
+        'item': this.science,
+        'science': this.science,
+        'group_id': this.groupId,
+        'group': this.group
       });
     }, (res: any) => {
       console.log( res );

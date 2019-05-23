@@ -21,8 +21,10 @@ export class CreateThemesPage {
 
   sieceList: any[];
 
+  group: any;
   science: any;
   groupId: number;
+  item: any;
 
 
   constructor(
@@ -36,21 +38,20 @@ export class CreateThemesPage {
     let showNewThemes = this.navParams.get('showNewThemes');
 
     let showEditThemes = this.navParams.get('showEditThemes');
-    this.science = this.navParams.get('item');
+    this.item = this.navParams.get('item');
+    this.group = this.navParams.get('group');
+    this.science = this.navParams.get('science');
     this.groupId = this.navParams.get('group_id');
 
-    console.log( this.science );
-
-    this.getThemes( this.groupId, this.science.id );
 
     if( showNewThemes || showEditThemes ){
 
       let message = '';
 
-      let key = 'SCIENCE_CREATE';
+      let key = 'THEMES_CREATE';
       let themesName = showNewThemes;
       if( showEditThemes ){
-        key = 'SCIENCE_EDIT';
+        key = 'THEMES_EDIT';
         themesName = showEditThemes;
       }
       this.translateService.get(key).subscribe((value) => {
@@ -77,14 +78,14 @@ export class CreateThemesPage {
   deleteItem(itemId: Number) {
     let info = {
       'token': this.auth.getToken(),
-      'course_id': itemId
+      'theme_id': itemId
     };
-    let seq = this.api.post('course/remove', info).share();
+    let seq = this.api.post('theme/remove', info).share();
 
     seq.subscribe((res: any) => {
 
       let message = '';
-      this.translateService.get('SCIENCE_REMOVE').subscribe((value) => {
+      this.translateService.get('THEMES_REMOVE').subscribe((value) => {
         message = value;
       });
 
@@ -107,7 +108,7 @@ export class CreateThemesPage {
       'group_id': group_id,
       'course_id': course_id,
     };
-    let seq = this.api.get('course/themes', info).share();
+    let seq = this.api.post('course/themes', info).share();
 
     seq.subscribe((res: any) => {
       console.log( res );
@@ -119,8 +120,11 @@ export class CreateThemesPage {
   openPageCreate(){
     this.navCtrl.push('CreateThemesFormPage',
       {
+        'item': this.science,
+        'science': this.science,
         'group_id': this.groupId,
-        'course_id': this.science.id
+        'course_id': this.science.id,
+        'group': this.group
       }
     );
   }
@@ -128,8 +132,17 @@ export class CreateThemesPage {
   openItem(item: any){
     this.navCtrl.push('CreateThemesFormPage', {
       'item': item,
+      'edit': true,
+      'science': this.science,
       'group_id': this.groupId,
-      'course_id': this.science.id
+      'course_id': this.science.id,
+      'group': this.group
+    });
+  }
+
+  backToScience(){
+    this.navCtrl.setRoot('ItemDetailPage', {
+      'item': this.group
     });
   }
 }

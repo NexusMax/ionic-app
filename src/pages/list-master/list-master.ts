@@ -69,7 +69,7 @@ export class ListMasterPage {
    */
   openItem(item: Item) {
 
-    this.navCtrl.push('ItemDetailPage', {
+    this.navCtrl.setRoot('ItemDetailPage', {
       item: item
     });
   }

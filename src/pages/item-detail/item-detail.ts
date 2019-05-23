@@ -29,6 +29,9 @@ export class ItemDetailPage {
     public toastCtrl: ToastController
   ) {
     this.item = navParams.get('item') || items.defaultItem;
+
+    console.log( this.item );
+
     this.item.completed = true;
     this.getSienceGroup( this.item.id );
     this.getGroups( this.item.id ).subscribe((res: any) => {
@@ -201,15 +204,12 @@ export class ItemDetailPage {
 
 
   openThemes(item: any){
-
-    console.log( item );
-
-    this.navCtrl.push('CreateThemesPage', {
+    this.navCtrl.setRoot('CreateThemesPage', {
       item: item,
+      science: item,
+      group: this.item,
       group_id: this.item.id
     });
-
-
   }
 
 }

@@ -1,6 +1,10 @@
 <ion-header>
-
   <ion-navbar>
+    <ion-buttons left>
+      <button ion-button icon-only (click)="backToScience()" class="my-style-for-modal">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
     <ion-title class="custom-title">
       <div class="title-name">{{ 'THEMES_LIST' | translate }}</div>
       <button ion-button clear class="custom-button" (click)="openPageCreate()"><ion-icon name="add"></ion-icon></button>

@@ -35,14 +35,17 @@ page-item-detail {
         }
       }
     }
-
+    .label-md {
+      margin: 12px 8px 12px 0;
+    }
 
   }
 }
 
 .custom-navbar{
   background-color: transparent;
-  padding: 0;
+  padding: 0 12px;
+  font-size: 2rem;
 
   .item-inner {
     padding-right: 0 !important;
