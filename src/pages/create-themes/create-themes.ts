@@ -4,6 +4,7 @@ import { Items, Api, Auth } from '../../providers';
 import {SettingsPage} from "../settings/settings";
 import {CreateThemesFormPage} from "../create-themes-form/create-themes-form";
 import {TranslateService} from "@ngx-translate/core";
+import {RatingPage} from "../rating/rating";
 
 /**
  * Generated class for the CreateSciencePage page.
@@ -41,7 +42,7 @@ export class CreateThemesPage {
     this.item = this.navParams.get('item');
     this.group = this.navParams.get('group');
     this.science = this.navParams.get('science');
-    this.groupId = this.navParams.get('group_id');
+    this.groupId = this.group.id;
 
 
     if( showNewThemes || showEditThemes ){
@@ -143,6 +144,15 @@ export class CreateThemesPage {
   backToScience(){
     this.navCtrl.setRoot('ItemDetailPage', {
       'item': this.group
+    });
+  }
+
+  openRating(item: any){
+    this.navCtrl.push('RatingPage', {
+      'group': this.group,
+      'theme': item,
+      'science':this.science,
+      'item': this.item
     });
   }
 }

@@ -1,0 +1,27 @@
+<!--
+  Generated template for the RatingPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{ 'RATING' | translate }}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <ion-list>
+    <ion-item-sliding *ngFor="let item of students">
+      <button ion-item (click)="setRating(item)">
+        <h2>{{ item.last_name + ' ' + item.first_name + ' ' + item.second_name}}</h2>
+        <ion-note item-end *ngIf="item.id">{{'ID: ' + item.id}}</ion-note>
+      </button>
+    </ion-item-sliding>
+  </ion-list>
+
+</ion-content>

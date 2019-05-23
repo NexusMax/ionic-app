@@ -18,12 +18,18 @@
 
   <ion-list *ngIf="sieceList?.length > 0; else elseBlock">
     <ion-item-sliding *ngFor="let item of sieceList">
-      <button ion-item (click)="openItem(item)">
+      <button ion-item (click)="openRating(item)">
         <h2>{{item.name}}</h2>
         <ion-note item-end *ngIf="item.id">{{'ID: ' + item.id}}</ion-note>
       </button>
 
-      <ion-item-options>
+      <ion-item-options side="left">
+        <button ion-button color="primary" (click)="openItem(item)">
+          <ion-icon name="create"></ion-icon>
+        </button>
+      </ion-item-options>
+
+      <ion-item-options side="right">
         <button ion-button color="danger" (click)="deleteItem(item.id)">
           {{ 'DELETE_BUTTON' | translate }}
         </button>
