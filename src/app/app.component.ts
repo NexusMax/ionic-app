@@ -36,8 +36,7 @@ export class MyApp {
   pages: any[] = [
     { title: 'ABOUT', component: 'AboutPage' },
     { title: 'CONTACT', component: 'ContactPage' },
-    { title: 'LOGOUT', component: 'LogoutPage' },
-    { title: 'Welcome', component: 'WelcomePage' }
+    { title: 'LOGOUT', component: 'LogoutPage' }
   ];
 
   constructor(
