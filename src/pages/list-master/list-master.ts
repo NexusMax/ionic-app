@@ -26,7 +26,7 @@ export class ListMasterPage {
     public toastCtrl: ToastController
   ) {
     this.tabs = navCtrl.parent;
-    this.currentItems = this.items.query();
+    //this.currentItems = this.items.query();
     this.getGroups();
 
     console.log( this.currentItems );

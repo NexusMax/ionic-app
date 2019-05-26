@@ -85,6 +85,7 @@ export class RatingPage {
         {
           name: 'rating',
           placeholder: title,
+          type: 'number',
           value: inputValue
         },
       ],
