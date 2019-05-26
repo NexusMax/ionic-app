@@ -21,6 +21,13 @@
         <h2>{{ item.last_name + ' ' + item.first_name + ' ' + item.second_name}}</h2>
         <ion-note item-end *ngIf="item.id"><ion-icon name="stats"></ion-icon>: {{ currentRating(item) }}</ion-note>
       </button>
+
+      <ion-item-options side="right">
+        <button ion-button color="danger" (click)="deleteItem(item.rating.id)">
+          {{ 'DELETE_RATING' | translate }}
+        </button>
+      </ion-item-options>
+
     </ion-item-sliding>
   </ion-list>
 

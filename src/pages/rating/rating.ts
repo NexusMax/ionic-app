@@ -198,4 +198,32 @@ export class RatingPage {
     return 0;
   }
 
+  deleteItem(ratingId: number){
+    let info = {
+      'token': this.auth.getToken(),
+      'rating_id': ratingId
+    };
+    let seq = this.api.post('rating/remove', info).share();
+
+    seq.subscribe((res: any) => {
+
+      this.ionViewWillEnter();
+      let message = '';
+      this.translateService.get('RATING_DELETED').subscribe((value) => {
+        message = value;
+      });
+
+      let toast = this.toastCtrl.create({
+        message: message,
+        duration: 3000,
+        position: 'top'
+      });
+      toast.present();
+
+    }, err => {
+      console.error('ERROR', err);
+    });
+    return seq;
+  }
+
 }
