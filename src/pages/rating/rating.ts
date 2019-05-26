@@ -17,7 +17,8 @@ import {Api, Auth} from "../../providers";
 })
 export class RatingPage {
 
-  students: any[];
+  studentsWithRating: any[];
+
   group: any;
   theme: any;
 
@@ -47,7 +48,7 @@ export class RatingPage {
   }
 
   ionViewWillEnter(){
-    this.getGroups();
+    this.getStudentsWithRating();
   }
 
   setRating(item: any) {
@@ -56,6 +57,13 @@ export class RatingPage {
     let cancel = '';
     let save = '';
     let ratingPromText = '';
+    let inputValue = "";
+    let edit = false;
+
+    if( item.rating !== null ){
+      inputValue = item.rating.rating;
+      edit = true;
+    }
 
     this.translateService.get('RATING_TITLE').subscribe((value) => {
       title = value;
@@ -76,7 +84,8 @@ export class RatingPage {
       inputs: [
         {
           name: 'rating',
-          placeholder: title
+          placeholder: title,
+          value: inputValue
         },
       ],
       buttons: [
@@ -89,12 +98,38 @@ export class RatingPage {
         {
           text: save,
           handler: data => {
-            this.saveRating(item.id, data.rating );
+
+            if( data.rating === "" ){
+              data.rating = 0;
+            }
+
+            if( edit ){
+              this.editRating(item.rating.id, data.rating);
+            }else{
+              this.saveRating(item.id, data.rating);
+            }
           }
         }
       ]
     });
     prompt.present();
+  }
+
+  getStudentsWithRating(){
+    let info = {
+      'token': this.auth.getToken(),
+      'theme_id': this.theme.id
+    };
+    let seq = this.api.post('theme/ratings', info).share();
+
+    seq.subscribe((res: any) => {
+      console.log( res );
+      this.studentsWithRating = res.data;
+
+    }, err => {
+      console.error('ERROR', err);
+    });
+    return seq;
   }
 
   saveRating(studenId: number, rating: number){
@@ -108,7 +143,7 @@ export class RatingPage {
 
     seq.subscribe((res: any) => {
 
-      console.log( res );
+      this.ionViewWillEnter();
       let message = '';
       this.translateService.get('RATING_ADD').subscribe((value) => {
         message = value;
@@ -127,20 +162,40 @@ export class RatingPage {
     return seq;
   }
 
-  getGroups(){
-
+  editRating(ratingId: number, rating: number){
     let info = {
       'token': this.auth.getToken(),
-      'group_id': this.group.id
+      'rating_id': ratingId,
+      'rating': rating
     };
-    let seq = this.api.post('group/users', info).share();
+    let seq = this.api.post('rating/edit', info).share();
 
     seq.subscribe((res: any) => {
-      this.students = res.users;
+
+      this.ionViewWillEnter();
+      let message = '';
+      this.translateService.get('RATING_EDIT').subscribe((value) => {
+        message = value;
+      });
+
+      let toast = this.toastCtrl.create({
+        message: message,
+        duration: 3000,
+        position: 'top'
+      });
+      toast.present();
+
     }, err => {
       console.error('ERROR', err);
     });
     return seq;
+  }
+
+  currentRating(item: any){
+    if( item.rating !== null ){
+      return item.rating.rating;
+    }
+    return 0;
   }
 
 }
