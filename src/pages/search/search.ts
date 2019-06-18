@@ -20,6 +20,7 @@ export class SearchPage {
 
   // pager object
   pager: any = {};
+  myInput;
 
 
 
@@ -38,6 +39,7 @@ export class SearchPage {
 
   ionViewWillEnter(){
     this.getGroups();
+    this.myInput = '';
   }
 
   setPage(page: number) {

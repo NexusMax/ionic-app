@@ -10,7 +10,16 @@
   "TAB2_TITLE": "Групи",
   "TAB3_TITLE": "Предмети",
 
+  "TAB4_TITLE": "Мої предмети",
+  "TAB5_TITLE": "Моя група",
+  "TAB6_TITLE": "Інформація",
+
   "MAP_TITLE": "Мапа",
+
+  "USER_MY_COURSES": "Мої предмети",
+  "USER_MY_COURSES_DETAIL": "Предмет",
+  "DEFAULT_VALUE_IF_USER_NOT_HAVE_COURSES_TITLE": "У вас немає предметів",
+  "DEFAULT_VALUE_IF_USER_NOT_HAVE_COURSES_DESC": "Предмети з'являться після того, як викладач добавить до вашої групи свій предмет.",
 
 
 
