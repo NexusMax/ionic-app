@@ -15,11 +15,21 @@
   "TAB6_TITLE": "Інформація",
 
   "MAP_TITLE": "Мапа",
+  "USER_MY_GROUP": "Моя група",
+  "INFORMATION_BUTTON": "Інформація",
+
+  "USER_MY_COURSES_THEME": "Теми з предмету",
+  "USER_MY_COURSES_THEMES_DETAIL": "Інформація про тему",
+  "USER_MY_RATING": "Оцінки з теми",
 
   "USER_MY_COURSES": "Мої предмети",
   "USER_MY_COURSES_DETAIL": "Предмет",
   "DEFAULT_VALUE_IF_USER_NOT_HAVE_COURSES_TITLE": "У вас немає предметів",
   "DEFAULT_VALUE_IF_USER_NOT_HAVE_COURSES_DESC": "Предмети з'являться після того, як викладач добавить до вашої групи свій предмет.",
+
+  "USER_MY_GROUP_INFORMATION": "Інформація про мою групу",
+  "DEFAULT_VALUE_IF_USER_NOT_HAVE_GROUP_USER_TITLE": "Студентів вашої групи не знайдено",
+  "DEFAULT_VALUE_IF_USER_NOT_HAVE_GROUP_USER_DESC": "Зверніться будь-ласка до адміністрації додатку в формі відклику.",
 
 
 

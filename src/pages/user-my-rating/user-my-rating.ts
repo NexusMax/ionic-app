@@ -2,10 +2,9 @@ import { Component } from '@angular/core';
 import {IonicPage, NavController, NavParams, ToastController} from 'ionic-angular';
 import {Api, Auth} from "../../providers";
 import {TranslateService} from "@ngx-translate/core";
-import {UserMyGroupInformationPage} from "../user-my-group-information/user-my-group-information";
 
 /**
- * Generated class for the UserMyGroupPage page.
+ * Generated class for the UserMyRatingPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -13,12 +12,13 @@ import {UserMyGroupInformationPage} from "../user-my-group-information/user-my-g
 
 @IonicPage()
 @Component({
-  selector: 'page-user-my-group',
-  templateUrl: 'user-my-group.html',
+  selector: 'page-user-my-rating',
+  templateUrl: 'user-my-rating.html',
 })
-export class UserMyGroupPage {
+export class UserMyRatingPage {
 
-  myGroupStudents: any[];
+  theme;
+  rating: any[];
 
   constructor(
     public navCtrl: NavController,
@@ -26,37 +26,33 @@ export class UserMyGroupPage {
     public translateService: TranslateService,
     public toastCtrl: ToastController,
     public api: Api,
-    public auth: Auth
-) {
+    public auth: Auth,
+  ) {
+
+    this.theme = navParams.get('theme');
   }
 
   ionViewDidLoad() {
   }
 
   ionViewWillEnter(){
-    this.getMyGroupStudents();
+    this.getRating();
   }
 
-  getMyGroupStudents(){
-
+  getRating(){
     let info = {
       'token': this.auth.getToken(),
+      'theme_id': this.theme.id
     };
-    let seq = this.api.get('student/group/users', info).share();
+    let seq = this.api.get('student/rating/list', info).share();
 
     seq.subscribe((res: any) => {
       // console.log( res );
-      this.myGroupStudents = res.data;
+      this.rating = res.data;
     }, err => {
       console.error('ERROR', err);
     });
     return seq;
-  }
-
-  openGroup( group: any ){
-    this.navCtrl.push('UserMyGroupInformationPage', {
-      group: group
-    });
   }
 
 }

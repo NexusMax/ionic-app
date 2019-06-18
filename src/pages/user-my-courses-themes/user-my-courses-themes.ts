@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
 import {IonicPage, NavController, NavParams, ToastController} from 'ionic-angular';
+import {UserMyCoursesThemesDetailPage} from "../user-my-courses-themes-detail/user-my-courses-themes-detail";
 import {TranslateService} from "@ngx-translate/core";
 import {Api, Auth} from "../../providers";
-import {UserMyCoursesDetailPage} from "../user-my-courses-detail/user-my-courses-detail";
-import {UserMyCoursesThemesDetailPage} from "../user-my-courses-themes-detail/user-my-courses-themes-detail";
 
 /**
- * Generated class for the UserMyCoursesPage page.
+ * Generated class for the UserMyCoursesThemesPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -14,12 +13,13 @@ import {UserMyCoursesThemesDetailPage} from "../user-my-courses-themes-detail/us
 
 @IonicPage()
 @Component({
-  selector: 'page-user-my-courses',
-  templateUrl: 'user-my-courses.html',
+  selector: 'page-user-my-courses-themes',
+  templateUrl: 'user-my-courses-themes.html',
 })
-export class UserMyCoursesPage {
+export class UserMyCoursesThemesPage {
 
-  courses: any[];
+  themes: any[];
+  course;
 
   constructor(
     public navCtrl: NavController,
@@ -29,45 +29,41 @@ export class UserMyCoursesPage {
     public api: Api,
     public auth: Auth,
   ) {
-    this.courses = [
-      { name: 'Мова', id: 1},
-      { name: 'География', id: 2}
-    ];
+    this.course = navParams.get('course');
   }
 
   ionViewDidLoad() {
   }
 
   ionViewWillEnter(){
-    this.getCourses();
+    this.getCoursesThemes();
   }
 
-
-  getCourses(){
-
+  getCoursesThemes(){
     let info = {
       'token': this.auth.getToken(),
+      'course_id': this.course.id
     };
-    let seq = this.api.get('student/course/list', info).share();
+    let seq = this.api.get('student/theme/get', info).share();
 
     seq.subscribe((res: any) => {
       // console.log( res );
-      this.courses = res.data;
+      this.themes = res.data;
     }, err => {
       console.error('ERROR', err);
     });
     return seq;
   }
 
-  openCourse( course: any ){
-    this.navCtrl.push('UserMyCoursesDetailPage', {
-      course: course
+  openThemesRating(theme:any){
+    this.navCtrl.push('UserMyRatingPage', {
+      theme: theme
     });
   }
 
-  openCourseThemes( course: any ){
-    this.navCtrl.setRoot('UserMyCoursesThemesPage', {
-      course: course
+  openThemes(theme: any){
+    this.navCtrl.push('UserMyCoursesThemesDetailPage', {
+      theme: theme
     });
   }
 
