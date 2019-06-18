@@ -26,6 +26,8 @@
   "USER_MY_COURSES_DETAIL": "Предмет",
   "DEFAULT_VALUE_IF_USER_NOT_HAVE_COURSES_TITLE": "У вас немає предметів",
   "DEFAULT_VALUE_IF_USER_NOT_HAVE_COURSES_DESC": "Предмети з'являться після того, як викладач добавить до вашої групи свій предмет.",
+  "DEFAULT_VALUE_IF_USER_NOT_HAVE_THEME_TITLE": "Предмет не має тем",
+  "DEFAULT_VALUE_IF_USER_NOT_HAVE_THEME_DESC": "Теми з'являться після того, як викладач добавить до вашої групи свій предмет.",
 
   "USER_MY_GROUP_INFORMATION": "Інформація про мою групу",
   "DEFAULT_VALUE_IF_USER_NOT_HAVE_GROUP_USER_TITLE": "Студентів вашої групи не знайдено",
@@ -149,6 +151,17 @@
   "SAVE":"Зберегти",
 
   "DELETE_RATING": "Видалити оцінку",
+  "STUDENT_NAME": "Студент",
+  "STUDENT_RATING": "Оцінка",
+
+  "STUDENT_LASTNAME_LIST": "Фамілія",
+  "STUDENT_NAME_LIST": "Ім'я",
+  "STUDENT_SURNAME_LIST": "По батькові",
+
+  "USER_MY_RATING_DETAIL": "Оцінка з теми",
+  "USER_MY_GROUP_NAME": "Назва групи",
+  "USER_THEME_NAME": "Назва теми",
+  "USER_MY_COURSE_NAME": "Назва предмету",
   "RATING_DELETED": "Оцінка видалена"
 
 }

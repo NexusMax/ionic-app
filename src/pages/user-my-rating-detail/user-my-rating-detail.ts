@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import {IonicPage, NavController, NavParams, ToastController} from 'ionic-angular';
-import {Api, Auth} from "../../providers";
 import {TranslateService} from "@ngx-translate/core";
+import {Api, Auth} from "../../providers";
 
 /**
- * Generated class for the UserMyRatingPage page.
+ * Generated class for the UserMyRatingDetailPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -12,13 +12,14 @@ import {TranslateService} from "@ngx-translate/core";
 
 @IonicPage()
 @Component({
-  selector: 'page-user-my-rating',
-  templateUrl: 'user-my-rating.html',
+  selector: 'page-user-my-rating-detail',
+  templateUrl: 'user-my-rating-detail.html',
 })
-export class UserMyRatingPage {
+export class UserMyRatingDetailPage {
 
   theme;
-  rating: any[];
+  rating;
+  ratingInfo: any[];
 
   constructor(
     public navCtrl: NavController,
@@ -30,25 +31,31 @@ export class UserMyRatingPage {
   ) {
 
     this.theme = navParams.get('theme');
+    this.rating = navParams.get('rating');
+
+    console.log( this.theme );
+    console.log( this.rating );
+
   }
 
   ionViewDidLoad() {
   }
 
   ionViewWillEnter(){
-    this.getRating();
+    //this.getRatingInfo();
   }
 
-  getRating(){
+  getRatingInfo(){
     let info = {
       'token': this.auth.getToken(),
-      'theme_id': this.theme.id
+      'rating_id': this.rating.rating.id
     };
-    let seq = this.api.get('student/rating/list', info).share();
+    let seq = this.api.get('student/rating/get', info).share();
 
     seq.subscribe((res: any) => {
       // console.log( res );
-      this.rating = res.data;
+      this.ratingInfo = res.data;
+      console.log( this.rating );
     }, err => {
       console.error('ERROR', err);
     });
@@ -60,13 +67,6 @@ export class UserMyRatingPage {
       return item.rating.rating;
     }
     return 0;
-  }
-
-  openRating(rating: any){
-    this.navCtrl.push('UserMyRatingDetailPage', {
-      theme: this.theme,
-      rating: rating
-    });
   }
 
 }

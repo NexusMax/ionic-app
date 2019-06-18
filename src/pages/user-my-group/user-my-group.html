@@ -18,7 +18,7 @@
 
   <ion-list *ngIf="myGroupStudents?.length > 0; else elseBlock">
     <ion-item-sliding *ngFor="let item of myGroupStudents">
-      <button ion-item (click)="openCourse(item)">
+      <button ion-item >
         <h2>{{ item.last_name + ' ' + item.first_name + ' ' + item.second_name }}</h2>
       </button>
     </ion-item-sliding>

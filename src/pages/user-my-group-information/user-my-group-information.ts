@@ -35,10 +35,10 @@ export class UserMyGroupInformationPage {
   }
 
   ionViewDidLoad() {
-    this.getCourses();
+    this.getGroupInfo();
   }
 
-  getCourses(){
+  getGroupInfo(){
 
     let info = {
       'token': this.auth.getToken(),
@@ -46,7 +46,6 @@ export class UserMyGroupInformationPage {
     let seq = this.api.get('student/group/info', info).share();
 
     seq.subscribe((res: any) => {
-      console.log( res );
       this.myGroupInformation = res.data;
     }, err => {
       console.error('ERROR', err);

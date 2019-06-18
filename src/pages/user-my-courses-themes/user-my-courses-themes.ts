@@ -44,7 +44,7 @@ export class UserMyCoursesThemesPage {
       'token': this.auth.getToken(),
       'course_id': this.course.id
     };
-    let seq = this.api.get('student/theme/get', info).share();
+    let seq = this.api.get('student/theme/list', info).share();
 
     seq.subscribe((res: any) => {
       // console.log( res );

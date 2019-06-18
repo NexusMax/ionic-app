@@ -19,6 +19,8 @@ export class UserMyCoursesDetailPage {
 
   course;
 
+  courseInfo;
+
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -32,7 +34,25 @@ export class UserMyCoursesDetailPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad UserMyCoursesDetailPage');
+  }
+
+  ionViewWillEnter(){
+    this.getCoursesInfo();
+  }
+
+  getCoursesInfo(){
+    let info = {
+      'token': this.auth.getToken(),
+      'course_id': this.course.id
+    };
+    let seq = this.api.get('student/course/get', info).share();
+
+    seq.subscribe((res: any) => {
+      this.courseInfo = res.data;
+    }, err => {
+      console.error('ERROR', err);
+    });
+    return seq;
   }
 
 }
