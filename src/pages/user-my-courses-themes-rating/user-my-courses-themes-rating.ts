@@ -47,7 +47,7 @@ export class UserMyCoursesThemesRatingPage {
     let seq = this.api.get('student/rating/all', info).share();
 
     seq.subscribe((res: any) => {
-      console.log( res );
+      console.log( res.data );
       this.themesRating = res.data;
     }, err => {
       console.error('ERROR', err);
