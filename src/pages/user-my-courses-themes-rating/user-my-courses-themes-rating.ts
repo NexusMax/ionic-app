@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import {IonicPage, NavController, NavParams, ToastController} from 'ionic-angular';
-import {UserMyCoursesThemesDetailPage} from "../user-my-courses-themes-detail/user-my-courses-themes-detail";
 import {TranslateService} from "@ngx-translate/core";
 import {Api, Auth} from "../../providers";
+import {UserMyCoursesThemesRatingDetailPage} from "../user-my-courses-themes-rating-detail/user-my-courses-themes-rating-detail";
 
 /**
- * Generated class for the UserMyCoursesThemesPage page.
+ * Generated class for the UserMyCoursesThemesRatingPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -13,13 +13,13 @@ import {Api, Auth} from "../../providers";
 
 @IonicPage()
 @Component({
-  selector: 'page-user-my-courses-themes',
-  templateUrl: 'user-my-courses-themes.html',
+  selector: 'page-user-my-courses-themes-rating',
+  templateUrl: 'user-my-courses-themes-rating.html',
 })
-export class UserMyCoursesThemesPage {
+export class UserMyCoursesThemesRatingPage {
 
-  themes: any[];
   course;
+  themesRating: any[];
 
   constructor(
     public navCtrl: NavController,
@@ -27,7 +27,7 @@ export class UserMyCoursesThemesPage {
     public translateService: TranslateService,
     public toastCtrl: ToastController,
     public api: Api,
-    public auth: Auth,
+    public auth: Auth
   ) {
     this.course = navParams.get('course');
   }
@@ -36,39 +36,35 @@ export class UserMyCoursesThemesPage {
   }
 
   ionViewWillEnter(){
-    this.getCoursesThemes();
+    this.getCoursesRating();
   }
 
-  getCoursesThemes(){
+  getCoursesRating(){
     let info = {
       'token': this.auth.getToken(),
       'course_id': this.course.id
     };
-    let seq = this.api.get('student/theme/list', info).share();
+    let seq = this.api.get('student/rating/all', info).share();
 
     seq.subscribe((res: any) => {
       console.log( res );
-      this.themes = res.data;
+      this.themesRating = res.data;
     }, err => {
       console.error('ERROR', err);
     });
     return seq;
   }
 
-  openThemesRating(theme:any){
-    this.navCtrl.push('UserMyRatingPage', {
-      theme: theme
-    });
+  currentRating(item: any){
+    if( item.rating !== null ){
+      return item.rating.rating;
+    }
+    return 0;
   }
 
-  openThemes(theme: any){
-    this.navCtrl.push('UserMyCoursesThemesDetailPage', {
-      theme: theme
-    });
-  }
-
-  openCourseRatings(){
-    this.navCtrl.push('UserMyCoursesThemesRatingPage', {
+  openRating(rating: any){
+    this.navCtrl.push('UserMyCoursesThemesRatingDetailPage', {
+      rating: rating,
       course: this.course
     });
   }

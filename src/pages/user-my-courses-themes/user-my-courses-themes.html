@@ -5,11 +5,12 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
   <ion-navbar>
-    <ion-title>{{ 'USER_MY_COURSES_THEME' | translate }}: {{ course.name }}</ion-title>
+    <ion-title class="custom-title">
+      <div class="title-name">{{ 'USER_MY_COURSES_THEME' | translate }}: {{ course.name }}</div>
+      <button ion-button clear class="custom-button" (click)="openCourseRatings()"><ion-icon name="information-circle"></ion-icon></button>
+    </ion-title>
   </ion-navbar>
-
 </ion-header>
 
 

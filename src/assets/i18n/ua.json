@@ -65,6 +65,7 @@
 
   "LIST_MASTER_TITLE": "Список",
   "LIST_GROUP_TITLE": "Список моїх груп",
+  "USER_MY_INFORMATION": "Інформація",
 
   "GROUP": "Група",
   "GROUP_ADD": "До списку моїх груп додана:",
@@ -160,8 +161,11 @@
 
   "USER_MY_RATING_DETAIL": "Оцінка з теми",
   "USER_MY_GROUP_NAME": "Назва групи",
+  "USER_MY_LOGIN": "Логін",
   "USER_THEME_NAME": "Назва теми",
   "USER_MY_COURSE_NAME": "Назва предмету",
+  "USER_MY_COURSES_THEMES_RATING_TITLE": "Всі оцінки з предмету",
+  "USER_MY_COURSES_THEMES_RATING_DETAIL_TITLE": "Всі оцінки з тем",
   "RATING_DELETED": "Оцінка видалена"
 
 }

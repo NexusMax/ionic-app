@@ -56,8 +56,8 @@ export class ContactPage {
     let seq = this.api.post('send', info).share();
 
     seq.subscribe((res: any) => {
-      console.log( res );
-
+      this.email = '';
+      this.message = '';
       let toast = this.toastCtrl.create({
         message: this.loginSuccessString,
         duration: 3000,
@@ -65,8 +65,6 @@ export class ContactPage {
       });
       toast.present();
     }, (res: any) => {
-      console.log( res );
-
       let toast = this.toastCtrl.create({
         message: this.loginErrorString,
         duration: 3000,

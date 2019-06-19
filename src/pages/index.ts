@@ -16,4 +16,4 @@ export const Tab3Root = 'CreateSciencePage';
 
 export const Tab4Root = 'UserMyCoursesPage';
 export const Tab5Root = 'UserMyGroupPage';
-export const Tab6Root = 'ListMasterPage';
+export const Tab6Root = 'UserMyInformationPage';
