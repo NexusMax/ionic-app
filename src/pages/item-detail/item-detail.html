@@ -28,8 +28,6 @@
       <ion-item-sliding *ngFor="let item of sieceList" >
         <button ion-item (click)="openThemes(item)">
           <h2>{{item.name}}</h2>
-          <ion-note item-end *ngIf="item.id">{{'ID: ' + item.id}}</ion-note>
-
         </button>
         <ion-item-options>
           <ion-toggle [(ngModel)]="item.completed" (ionChange)="updateScience(item)"></ion-toggle>
@@ -61,9 +59,8 @@
 
     <ion-list>
       <ion-item-sliding *ngFor="let item of usersGroup">
-        <button ion-item (click)="openItem(item)">
+        <button ion-item>
           <h2>{{ item.last_name + ' ' + item.first_name + ' ' + item.second_name}}</h2>
-          <ion-note item-end *ngIf="item.id">{{'ID: ' + item.id}}</ion-note>
         </button>
       </ion-item-sliding>
     </ion-list>

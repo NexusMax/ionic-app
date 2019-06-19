@@ -16,7 +16,6 @@
     <ion-item-sliding *ngFor="let item of sieceList">
       <button ion-item (click)="openItem(item)">
         <h2>{{item.name}}</h2>
-        <ion-note item-end *ngIf="item.id">{{'ID: ' + item.id}}</ion-note>
       </button>
 
       <ion-item-options>
@@ -38,7 +37,6 @@
         {{ 'DEFAULT_VALUE_IF_TEACHER_NOT_HAVE_SCIENCE_DESC' | translate }}
         <div>
           <button ion-button (click)="openPageCreate()" color="primary">{{ 'DEFAULT_VALUE_IF_TEACHER_NOT_HAVE_SCIENCE_LINK' | translate }}</button>
-
         </div>
       </ion-card-content>
     </ion-card>

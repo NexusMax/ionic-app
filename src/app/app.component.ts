@@ -34,9 +34,9 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   pages: any[] = [
-    { title: 'ABOUT', component: 'AboutPage' },
-    { title: 'CONTACT', component: 'ContactPage' },
-    { title: 'LOGOUT', component: 'LogoutPage' }
+    { title: 'ABOUT', component: 'AboutPage', page: 'MainBottomMenuPage' },
+    { title: 'CONTACT', component: 'ContactPage', page: 'MainBottomMenuPage' },
+    { title: 'LOGOUT', component: 'LogoutPage', page: 'MainBottomMenuPage' }
   ];
 
   constructor(
@@ -85,11 +85,6 @@ export class MyApp {
   }
 
   openPage(page) {
-    // Reset the content nav to have just this page
-    // we wouldn't want the back button to show in this scenario
-
-    console.log( this.user.isTeacher() );
-
-    this.nav.setRoot(page.component);
+    this.nav.push(page.component);
   }
 }

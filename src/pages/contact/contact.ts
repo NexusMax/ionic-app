@@ -39,24 +39,21 @@ export class ContactPage {
     this.translateService.get('CONTACT_SUCCESS').subscribe((value) => {
       this.loginSuccessString = value;
     });
-
-
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ContactPage');
   }
 
   save(){
 
     let info = {
       'token': this.auth.getToken(),
-      'user': this.user.getUser(),
+      'name': this.user.getUser().last_name + ' ' + this.user.getUser().first_name + ' '  + this.user.getUser().second_name,
       'email': this.email,
-      'message': this.message
+      'content': this.message
     };
 
-    let seq = this.api.post('contact/form', info).share();
+    let seq = this.api.post('send', info).share();
 
     seq.subscribe((res: any) => {
       console.log( res );
